@@ -3,7 +3,7 @@ services:
     restart: unless-stopped
     build: .
     ports:
-      - "1234:3000"
+      - "8080:3000"
     depends_on:
       - db
     env_file:

@@ -1,0 +1,35 @@
+.input-container label {
+	display: block;
+	text-transform: uppercase;
+	font-weight: 800;
+	margin-bottom: 7px;
+	font-size: 14px;
+
+}
+
+.input-container {
+	margin-bottom: 20px;
+}
+
+h1 {
+    margin-bottom: 0px;
+}
+
+.greeting-section p {
+    margin-top: 3px;
+}
+.greeting-section {
+    width: 100%;
+    margin-bottom: 25px;
+}
+section {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.credential-field {
+    margin-bottom: 25px;
+}
