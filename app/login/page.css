@@ -7,7 +7,13 @@
 
 }
 
+section div {
+    width: 70%;
+    max-width: 500px;
+}
+
 .input-container {
+    width: 100%;
 	margin-bottom: 20px;
 }
 
@@ -31,5 +37,6 @@ section {
 }
 
 .credential-field {
+    width: 100%;
     margin-bottom: 25px;
 }

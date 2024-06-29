@@ -10,8 +10,8 @@ export default function Home() {
             </div>
             <div className="credential-field">
                 <div className="input-container">
-                    <label>Username</label>
-                    <input placeholder="Enter username"/>
+                    <label>Username or email</label>
+                    <input placeholder="Enter username or email"/>
                 </div>
                 <div className="input-container">
                     <label>Password</label>
