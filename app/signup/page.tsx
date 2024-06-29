@@ -8,9 +8,9 @@ import { useRouter } from 'next/navigation'
 function LoginButton() {
     const { pending } = useFormStatus()
 
-    const handleClick = (event) => {
+    const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         if (pending) {
-        event.preventDefault()
+         event.preventDefault()
         }
     }
 
@@ -28,7 +28,7 @@ export default function Home() {
     const [errorMessage, setErrorMessage] = useState("")
     const router = useRouter()
 
-    const handleSubmit = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // Prevent default form submission behavior
         
         const user = {
@@ -46,7 +46,11 @@ export default function Home() {
         });
         const data = await response.json();
         if (data.status == 400) {
-            setErrorMessage("Failed to add user. Code: ".concat(data.error.code))
+            if (data.error.code == "P2002") {
+                setErrorMessage("User already exists.")
+            } else {
+                setErrorMessage("Failed to add user. Code: ".concat(data.error.code))
+            }
         } else {
             router.push('/')
         }
