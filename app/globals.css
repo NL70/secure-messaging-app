@@ -32,7 +32,7 @@ html, body {
 	width: 100%;
 	height: 42px;
 	border-radius: 3px;
-	border: 1px solid var(--primary-outline-color);
+	border: 0.1px solid var(--primary-outline-color);
 	background-color: var(--primary-background-color);
 	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
 	font-weight: 700;
@@ -47,6 +47,11 @@ nav {
 	background-color: var(--primary-hover-color);
 }
 
+
+.primary-button:active {
+	border: 1px solid var(--primary-outline-color);
+}
+
 h1 {
 	font-size: 35px;
 	font-weight: 600;
@@ -55,17 +60,17 @@ h1 {
 input {
 	box-sizing: border-box;
     background-color: var(--secondary-background-color);
-    border: 1px solid var(--secondary-outline-color);
+    border: 0.1px solid var(--secondary-outline-color);
     width: 100%;
     height: 38px;
     border-radius: 3px;
     padding-left: 15px;
-	box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.25);
+	box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.25);
 }
 
 input:focus {
     outline: none;
-    border: 2px solid var(--secondary-outline-color);
+    border: 1px solid var(--secondary-outline-color);
 
 }
 
