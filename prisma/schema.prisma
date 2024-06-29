@@ -14,7 +14,32 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   email String  @unique
-  name  String?
+  username  String @unique
+  password String
+  salt String
+  emailVerifications  EmailVerification[] 
+  sessions Sessions[]
+}
+
+model Sessions {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId      String   @db.Uuid
+  token        String   @db.Text
+  createdAt   DateTime @default(now())
+  expiresAt   DateTime
+  user User @relation(fields: [userId], references: [id])
+
+}
+
+model EmailVerification {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  userId      String   @db.Uuid
+  code        String   @db.VarChar(6)
+  createdAt   DateTime @default(now())
+  expiresAt   DateTime
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([userId, code])
 }

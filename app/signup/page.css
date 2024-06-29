@@ -1,0 +1,49 @@
+.input-container label {
+	display: block;
+	text-transform: uppercase;
+	font-weight: 800;
+	margin-bottom: 7px;
+	font-size: 14px;
+
+}
+
+.error-message {
+    margin-top: 15px;
+    color: var(--error-color);
+    font-weight: 600;
+}
+
+section div {
+    width: 70%;
+    max-width: 450px;
+}
+
+.input-container {
+    width: 100%;
+	margin-bottom: 25px;
+}
+
+h1 {
+    margin-bottom: 0px;
+}
+
+.greeting-section p {
+    margin-top: 3px;
+    color: var(--unemphasis-text)
+}
+.greeting-section {
+    width: 100%;
+    margin-bottom: 30px;
+}
+section {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.credential-field {
+    width: 100%;
+    margin-bottom: 30px;
+}

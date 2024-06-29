@@ -9,6 +9,8 @@
 	--secondary-background-color: #1B1B1F;
 	--secondary-outline-color: #333335;
 
+	--error-color: #ff3434;
+
 	--font-sans-serif: "Inter";
 
 	--unemphasis-text: #DDDDDD;
@@ -55,6 +57,11 @@ nav {
 h1 {
 	font-size: 35px;
 	font-weight: 600;
+}
+
+/* Prevents input from changing colour when autofilled */
+input:-webkit-autofill {
+	transition: 5000s;
 }
 
 input {
