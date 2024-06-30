@@ -7,6 +7,12 @@
 
 }
 
+.error-message {
+    margin-top: 15px;
+    color: var(--error-color);
+    font-weight: 600;
+}
+
 section div {
     width: 70%;
     max-width: 450px;
@@ -40,4 +46,8 @@ section {
 .credential-field {
     width: 100%;
     margin-bottom: 30px;
+}
+
+form p {
+    margin-top: 10px;
 }

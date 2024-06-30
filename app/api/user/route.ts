@@ -12,14 +12,12 @@ type UserData = {
   };
 
 async function createUser(user: UserData) {
-    const salt = crypto.randomBytes(16).toString('hex')
-    const hashedPassword = await argon2.hash(user.password.concat(salt))
+    const hashedPassword = await argon2.hash(user.password)
     await prisma.user.create({
       data: {
         email: user.email,
         username: user.username,
         password: hashedPassword,
-        salt: salt
       }
     });
 }
@@ -35,8 +33,7 @@ export async function POST(req: NextRequest) {
     await createUser(user);
     return NextResponse.json({ status: 201 })
   } catch (error) {
-    console.log("hm")
-    return NextResponse.json({ status: 400, error: error })
+    return NextResponse.json({ status: 400, message: error })
   }
 }
 

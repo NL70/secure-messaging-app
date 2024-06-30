@@ -5,7 +5,7 @@ import { useFormStatus } from 'react-dom'
 import { useState } from "react";
 import { useRouter } from 'next/navigation'
 
-function LoginButton() {
+function SignUpButton() {
     const { pending } = useFormStatus()
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -46,7 +46,7 @@ export default function Home() {
         });
         const data = await response.json();
         if (data.status == 400) {
-            if (data.error.code == "P2002") {
+            if (data.message.code == "P2002") {
                 setErrorMessage("User already exists.")
             } else {
                 setErrorMessage("Failed to add user. Code: ".concat(data.error.code))
@@ -54,7 +54,6 @@ export default function Home() {
         } else {
             router.push('/')
         }
-        console.log(data)        
     }
 
     return (
@@ -79,7 +78,7 @@ export default function Home() {
                             <input type="password" onChange={(e) => setPassword(e.target.value)} placeholder="•••••••••••••••"required aria-required/>
                         </div>
                     </div>
-                    <LoginButton/>
+                    <SignUpButton/>
                     {errorMessage && <p className="error-message">{errorMessage}</p>}
                 </form>
                 

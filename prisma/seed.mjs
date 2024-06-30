@@ -1,5 +1,4 @@
-import prisma from '../app/utils/prisma.mjs'
-import crypto from 'crypto';
+import prisma from '../app/utils/prisma.mjs';
 import argon2 from 'argon2';
 
 async function main() {
@@ -27,14 +26,12 @@ async function main() {
   ];
 
   for (const user of userData) {
-    const salt = crypto.randomBytes(16).toString('hex')
-    const hashedPassword = await argon2.hash(user.password.concat(salt))
+    const hashedPassword = await argon2.hash(user.password)
     await prisma.user.create({
       data: {
         email: user.email,
         username: user.username,
         password: hashedPassword,
-        salt: salt
       }
     });
   }
