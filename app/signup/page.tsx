@@ -26,7 +26,6 @@ export default function Home() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
-    const router = useRouter()
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // Prevent default form submission behavior
@@ -52,7 +51,7 @@ export default function Home() {
                 setErrorMessage("Failed to add user. Code: ".concat(data.error.code))
             }
         } else {
-            router.push('/')
+            window.location.href = '/'
         }
     }
 

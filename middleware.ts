@@ -9,8 +9,8 @@ export async function middleware(request: NextRequest) {
     if (allCookies.length == 0) return NextResponse.redirect(new URL('/login', request.url))
 
     const token = allCookies[0].value 
-    
-    const response = await fetch('http://localhost:3000/api/auth', {
+    console.log("middleware triggered")
+    const response = await fetch(`${process.env.BASE_URL}/api/auth`, {
         method: 'GET',
         headers: {
             'Token': `${token}`, // Assuming you want to use the token here
@@ -20,7 +20,7 @@ export async function middleware(request: NextRequest) {
     const data = await response.json()
     if (data.status !== 200) {
         return NextResponse.redirect(new URL('/login', request.url))
-    }
+    } else console.log("Auth successful")
     
 }
 

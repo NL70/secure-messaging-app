@@ -26,7 +26,6 @@ export default function Home() {
     const [usernameOrEmail, setUsernameOrEmail] = useState("")
     const [password, setPassword] = useState("")
     const [errorMessage, setErrorMessage] = useState("")
-    const router = useRouter()
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault(); // Prevent default form submission behavior
@@ -49,8 +48,7 @@ export default function Home() {
         } else if (data.status == 401) {
             setErrorMessage("Incorrect credentials")
         } else if (data.status == 200) {
-            router.push('/')
-            alert("hi")
+            window.location.href = '/'
         }
     }
 
