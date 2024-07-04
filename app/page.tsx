@@ -3,14 +3,12 @@ import prisma from "./utils/prisma.mjs";
 
 export default async function Home() {
   const token = cookies().get('token');
-  const response = await fetch(`${process.env.BASE_URL}/api/auth`, {
-    method: 'GET',
-    headers: {
-        'Token': `${token.value}`, // Assuming you want to use the token here
-    },
-  })
-  const data = await response.json();
-  const userId = data.session.userId
+  const session = await prisma.sessions.findFirst({
+    where: {
+        token: token?.value
+    }
+})
+  const userId = session.userId
   const user = await prisma.user.findUnique({
     where: {
       id: userId

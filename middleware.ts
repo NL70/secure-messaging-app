@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 export async function middleware(request: NextRequest) {
     const allCookies = cookies().getAll()
     if (allCookies.length == 0) return NextResponse.redirect(new URL('/login', request.url))
-
+    
     const token = allCookies[0].value 
     console.log("middleware triggered")
     const response = await fetch(`${process.env.BASE_URL}/api/auth`, {
@@ -18,12 +18,16 @@ export async function middleware(request: NextRequest) {
 
     })
     const data = await response.json()
+
+
     if (data.status !== 200) {
         return NextResponse.redirect(new URL('/login', request.url))
-    } else console.log("Auth successful")
+    } else if (data.status == 200 && (request.nextUrl.pathname.startsWith('/login') || request.nextUrl.pathname.startsWith('/signup'))) { // might need to refactor 
+        return NextResponse.redirect(new URL('/', request.url))
+    }
     
 }
 
 export const config = {
-  matcher: '/',
+  matcher: ['/', '/login', '/signup']
 }
